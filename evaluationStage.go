@@ -335,6 +335,12 @@ func makeAccessorStage(pair []string) evaluationOperator {
 				continue
 			}
 
+			field = coreValue.FieldByName(strings.ToUpper(pair[i][0:1]) + pair[i][1:])
+			if field != (reflect.Value{}) {
+				value = field.Interface()
+				continue
+			}
+
 			method := coreValue.MethodByName(pair[i])
 			if method == (reflect.Value{}) {
 				if corePtrVal.IsValid() {

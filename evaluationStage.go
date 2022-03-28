@@ -328,7 +328,7 @@ func makeAccessorStage(pair []string) evaluationOperator {
 			if coreValue.Kind() == reflect.Map {
 				rvalue := coreValue.MapIndex(reflect.ValueOf(pair[i]))
 				if rvalue.IsNil() || rvalue.IsZero() {
-					return nil, errors.New("Unable to access '" + pair[i] + "', '" + pair[i-1] + "' not contains")
+					return nil, errors.New("Unable to access '" + pair[i] + "' in map '" + pair[i-1] + "'")
 				}
 				value = rvalue.Interface()
 				continue
